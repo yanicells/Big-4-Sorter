@@ -10,8 +10,9 @@ async function loadPartial(elementId, partialPath) {
 }
 
 let currentQuestionIndex = 0;
-let answers = ["a"];
-let choice = "c";
+let answers = [0, 0, 0, 0];
+const choices = ["a", "b", "c", "d"];
+let choice = "";
 
 const questions = [
   {
@@ -90,11 +91,9 @@ let currentQuestion = questions[0];
 
 // Load all partials when DOM is ready
 $(document).ready(function() {
-    // Load header and footer
     loadPartial('header-placeholder', '/partials/header.html');
     loadPartial('footer-placeholder', '/partials/footer.html');
 
-    // Initialize the first question display
     updateDisplay();
 
     $("#next").on("click", function(){
@@ -102,19 +101,21 @@ $(document).ready(function() {
     });
 
     $(".choice").on("click", function(){
-        let userChoice = $(this).attr("id");
-        choice = userChoice;
-        $(this).toggleClass("selected");
+        $(".choice").removeClass("selected");
+        $(this).addClass("selected");
+        choice = $(this).attr("id");
     });
 });
 
 function nextQuestion(){
-    if (currentQuestionIndex < questions.length - 1){  // Check index, not currentQuestion
+    if (currentQuestionIndex < questions.length - 1){ 
         currentQuestionIndex += 1;
         currentQuestion = questions[currentQuestionIndex];
+        answers[choices.indexOf(choice)] += 1;
         updateDisplay();
-        answers.push(choice);
-        console.log(answers);
+    } else {
+        answers[choices.indexOf(choice)] += 1;
+        showResults();
     }
 }
 
@@ -124,5 +125,29 @@ function updateDisplay(){
     $("#b").text("B: " + currentQuestion.choiceB);
     $("#c").text("C: " + currentQuestion.choiceC);
     $("#d").text("D: " + currentQuestion.choiceD);
-    $(".show").text(choice)
+    $(".show").text(answers)
+    $(".choice").removeClass("selected");
+}
+
+function showResults(){
+    $(".quiz-container").hide();    
+    $("#result-container").removeClass("hidden");  
+    findFamily();
+}
+
+function findFamily(){
+    let maxIndex = answers.indexOf(Math.max(...answers));
+    if(maxIndex == 0){
+        $("#result-head").text("Congratulations! You belong to Fire Type")
+        $("#family-result").text("The fire type is...")
+    } else if (maxIndex == 1){
+        $("#result-head").text("Congratulations! You belong to Water Type")
+        $("#family-result").text("The water type is...")
+    } else if (maxIndex == 2){
+        $("#result-head").text("Congratulations! You belong to Grass Type")
+        $("#family-result").text("The grass type is...")
+    } else if (maxIndex == 3){
+        $("#result-head").text("Congratulations! You belong to Electric Type")
+        $("#family-result").text("The electric type is...")
+    }
 }

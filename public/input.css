@@ -7,3 +7,7 @@ p {
 .selected {
     @apply bg-[#116e76] shadow-lg;
 }
+
+.hidden {
+    display: none;
+}
