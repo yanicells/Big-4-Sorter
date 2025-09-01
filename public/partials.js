@@ -108,13 +108,22 @@ $(document).ready(function() {
 });
 
 function nextQuestion(){
+    if (choice === ""){
+      $(".alert").removeClass("hidden");
+      updateDisplay();
+      return;
+    } else {
+      $(".alert").addClass("hidden");
+    }
     if (currentQuestionIndex < questions.length - 1){ 
         currentQuestionIndex += 1;
         currentQuestion = questions[currentQuestionIndex];
         answers[choices.indexOf(choice)] += 1;
+        choice = "";
         updateDisplay();
     } else {
         answers[choices.indexOf(choice)] += 1;
+        choice = "";
         showResults();
     }
 }
