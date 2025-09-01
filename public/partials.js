@@ -125,7 +125,6 @@ function updateDisplay(){
     $("#b").text("B: " + currentQuestion.choiceB);
     $("#c").text("C: " + currentQuestion.choiceC);
     $("#d").text("D: " + currentQuestion.choiceD);
-    $(".show").text(answers)
     $(".choice").removeClass("selected");
 }
 
@@ -138,16 +137,16 @@ function showResults(){
 function findFamily(){
     let maxIndex = answers.indexOf(Math.max(...answers));
     if(maxIndex == 0){
-        $("#result-head").text("Congratulations! You belong to Fire Type")
-        $("#family-result").text("The fire type is...")
+        $("#result-head").text("Ready to ignite and rise! Welcome to the Blaze Family!")
+        $("#family-result").text("Fire types are passionate and driven, with a natural inclination for leadership. They thrive on challenges and inspire others with their enthusiasm. While their energy helps them achieve goals, they can become impatient if things don't move quickly. Their love for high-energy activities and creative expression shows their fiery nature.")
     } else if (maxIndex == 1){
-        $("#result-head").text("Congratulations! You belong to Water Type")
-        $("#family-result").text("The water type is...")
+        $("#result-head").text("Flow with strength, ride the tides! Welcome to the Wave Family!")
+        $("#family-result").text("Calm and adaptable, Water types are emotionally intelligent and empathetic individuals. They navigate emotional situations with ease and serve as a calming presence for others. Their default state is serenity, but they can be overwhelmed by intense emotions. They are drawn to activities that allow for contemplation and emotional depth, like yoga or journaling.")
     } else if (maxIndex == 2){
-        $("#result-head").text("Congratulations! You belong to Grass Type")
-        $("#family-result").text("The grass type is...")
+        $("#result-head").text("Rooted in growth, thriving together! Welcome to the Leaf Family!")
+        $("#family-result").text("Grounded and patient, Grass types are nurturing people who find joy in personal growth and stability. They act as a reliable support system and are known for their resilience and cooperation. While content with slow progress, they may struggle with confrontation. Their interests often involve nature and hands-on activities, like gardening or pottery.")
     } else if (maxIndex == 3){
-        $("#result-head").text("Congratulations! You belong to Electric Type")
-        $("#family-result").text("The electric type is...")
+        $("#result-head").text("We see the future and make it ours! Welcome to the Shock Family!")
+        $("#family-result").text("Electric types are quick-witted, innovative, and highly energetic thinkers. They thrive in dynamic settings and are known for their unique ideas and problem-solving skills. They are visionaries who love the thrill of new concepts but can become anxious with routine. Their hobbies, such as coding or extreme sports, reflect their need for intellectual stimulation and high-adrenaline experiences.")
     }
 }
