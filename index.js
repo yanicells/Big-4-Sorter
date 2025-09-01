@@ -16,6 +16,19 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
    
+app.get("/register", (req, res) => {
+  res.sendFile(__dirname + "/views/register.html");
+});
+
+app.post("/family-quiz", (req, res) => {
+  const { idNumber, fullName } = req.body;
+  console.log(`Registration: ID ${idNumber}, Name: ${fullName}`);
+  
+  // For now, just redirect to a success page or back to home
+  // You can add database logic here later
+  res.sendFile(__dirname + "/views/family-quiz.html");
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
