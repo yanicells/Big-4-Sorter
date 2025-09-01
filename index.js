@@ -21,8 +21,8 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/family-quiz", (req, res) => {
-  const { idNumber, fullName } = req.body;
-  console.log(`Registration: ID ${idNumber}, Name: ${fullName}`);
+  const { idNumber, fullName, email } = req.body;
+  console.log(`Registration: ID ${idNumber}, Name: ${fullName}, email: ${email}`);
   
   // For now, just redirect to a success page or back to home
   // You can add database logic here later
