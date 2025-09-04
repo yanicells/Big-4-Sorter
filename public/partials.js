@@ -1,4 +1,3 @@
-// Utility function to load HTML partials
 async function loadPartial(elementId, partialPath) {
     try {
         const response = await fetch(partialPath);
@@ -89,7 +88,6 @@ const questions = [
 
 let currentQuestion = questions[0];
 
-// Load all partials when DOM is ready
 $(document).ready(function() {
     loadPartial('header-placeholder', '/partials/header.html');
     loadPartial('footer-placeholder', '/partials/footer.html');
