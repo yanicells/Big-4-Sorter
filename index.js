@@ -1,4 +1,4 @@
-import 'dotenv/config';
+heck import 'dotenv/config';
 import express from "express";
 import bodyParser from "body-parser";
 import { dirname } from "path";
@@ -131,46 +131,10 @@ const families = [
 ]
 
 async function findFamily(answers) {
-  let family_scores = [];
-  for (const [index, score] of answers.entries()) {
-    family_scores.push([index, score]);
-  }
-  family_scores.sort((a, b) => b[1] - a[1]);
-  const family_sizes = await getFamilySizes();
-  console.log("Family Sizes: ", family_sizes);
+  // Find the index of the maximum score
+  let maxScore = Math.max(...answers);
+  let maxIndex = answers.indexOf(maxScore);
   
-  for (const [family_index, family_score] of family_scores) {
-    const family = families[family_index];
-    const family_size = family_sizes[family_index];
-    const fail_chance = (family_size-MIN_FAMILY_SIZE)/(MAX_FAMILY_SIZE-MIN_FAMILY_SIZE);
-    if ((family_size<MIN_FAMILY_SIZE)||(Math.random()>fail_chance)) return family;
-  }
-  const smallestFamily = families[family_sizes.indexOf(Math.min(...family_sizes))]
-  return smallestFamily;
-}
-const family_indexes = new Map([
-  ["Blaze", 0],
-  ["Wave", 1],
-  ["Leaf", 2],
-  ["Shock", 3]
-]);
-const MIN_FAMILY_SIZE = process.env.MIN_FAMILY_SIZE;
-const MAX_FAMILY_SIZE = process.env.MAX_FAMILY_SIZE;
-async function getFamilySizes() {
-  const query = `
-    SELECT family_type, COUNT(*) AS count
-    FROM students
-    GROUP BY family_type;
-  `;
-  try {
-    const result = await db.query(query);
-    const res = [0, 0, 0, 0]
-    Array.from(result.rows).map((entry) => {
-      const family_index = family_indexes.get(entry.family_type);
-      if (family_index !== undefined) res[family_index] = parseInt(entry.count)
-    }) ;
-    return res
-  } catch (err) {
-    console.error('Error running query', err);
-  }
+  // Return the family with the highest score
+  return families[maxIndex];
 }
