@@ -5,7 +5,7 @@ p {
 }
 
 .selected {
-    @apply bg-[#116e76] shadow-lg;
+    @apply bg-[#FCE992] shadow-lg text-[#c99812];
 }
 
 .hidden {

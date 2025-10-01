@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>MISAyang Samahan</title>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="bg-white">
+            <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+                <div class="bg-gray-100 shadow-lg rounded-lg p-8 md:p-12 mb-8">
+                    <h1 class="text-[#2097a2] text-3xl md:text-5xl font-extrabold mb-2">Family Distribution</h1>
+                </div>
+
+                <div class="relative overflow-x-auto rounded-lg">
+                    <% const familyNames=['Blaze', 'Wave' , 'Leaf' , 'Shock' ]; %>
+                    <% if(locals.families && families.length> 0) {%>
+                    <% locals.families.forEach(function(family, index) { %>
+                    <div class="bg-gray-100 shadow-lg rounded-lg p-2 md:p-4 mb-2 text-center mt-4">
+                        <h2 class="text-[#2097a2] text-1xl md:text-3xl font-bold"><%= familyNames[index] %> Family</h2>
+                    </div>
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-900 mb-8">
+                        <thead class="text-xs text-white uppercase bg-[#2097a2]">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">id</th>
+                                <th scope="col" class="px-6 py-3">name</th>
+                                <th scope="col" class="px-6 py-3">email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(family.length> 0) {%>
+                            <% family.forEach(function(student) { %>
+                            <tr class="bg-gray-100 border-b border-gray-200">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    <%= student.id %>
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= student.name %>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <%= student.email %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                            <% } else { %>
+                            <tr class="bg-gray-100 border-b border-gray-200">
+                                <td colspan="3" class="px-6 py-4 text-center text-gray-500">No students in this family.</td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                    <% }); %>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/partials.js"></script>
+</body>
+
+</html>

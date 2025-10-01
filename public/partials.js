@@ -1,11 +1,11 @@
 async function loadPartial(elementId, partialPath) {
-    try {
-        const response = await fetch(partialPath);
-        const html = await response.text();
-        document.getElementById(elementId).innerHTML = html;
-    } catch (error) {
-        console.error(`Error loading partial ${partialPath}:`, error);
-    }
+  try {
+    const response = await fetch(partialPath);
+    const html = await response.text();
+    document.getElementById(elementId).innerHTML = html;
+  } catch (error) {
+    console.error(`Error loading partial ${partialPath}:`, error);
+  }
 }
 
 let currentQuestionIndex = 0;
@@ -17,21 +17,25 @@ const questions = [
   {
     question: "When faced with a new challenge, what's your initial reaction?",
     choiceA: "I dive in headfirst and figure things out along the way.",
-    choiceB: "I consider the emotional impact on myself and others before proceeding.",
+    choiceB:
+      "I consider the emotional impact on myself and others before proceeding.",
     choiceC: "I analyze the situation carefully and plan my approach.",
     choiceD: "I trust my instincts and adjust as I go.",
   },
   {
     question: "What's your ideal way to spend a Friday night?",
-    choiceA: "Hitting up a big party or playing a high-energy game with friends.",
+    choiceA:
+      "Hitting up a big party or playing a high-energy game with friends.",
     choiceB: "Staying in, maybe journaling or doing something relaxing.",
     choiceC: "Gathering with a few close friends for a cozy hangout.",
-    choiceD: "Exploring a new concept or diving into a mystery documentary solo.",
+    choiceD:
+      "Exploring a new concept or diving into a mystery documentary solo.",
   },
   {
     question: "Which of these best describes your work style?",
     choiceA: "I work best under pressure and thrive on quick decisions.",
-    choiceB: "I'm methodical and prefer to take my time to get things just right.",
+    choiceB:
+      "I'm methodical and prefer to take my time to get things just right.",
     choiceC: "I like a cooperative, harmonious environment.",
     choiceD: "I need space to think deeply and work on complex problems.",
   },
@@ -60,8 +64,10 @@ const questions = [
     question: "How do you usually approach group projects?",
     choiceA: "I take charge and love the challenge.",
     choiceB: "I prefer to listen and help others succeed.",
-    choiceC: "I enjoy bringing people together and making sure everyone's included.",
-    choiceD: "I often do my part in my own way, analyzing and perfecting details.",
+    choiceC:
+      "I enjoy bringing people together and making sure everyone's included.",
+    choiceD:
+      "I often do my part in my own way, analyzing and perfecting details.",
   },
   {
     question: "What's most important to you in friendships?",
@@ -88,72 +94,75 @@ const questions = [
 
 let currentQuestion = questions[0];
 
-$(document).ready(function() {
-    loadPartial('header-placeholder', '/partials/header.html');
-    loadPartial('footer-placeholder', '/partials/footer.html');
+$(document).ready(function () {
+  loadPartial("header-placeholder", "/partials/header.html");
+  loadPartial("footer-placeholder", "/partials/footer.html");
 
-    updateDisplay();
+  updateDisplay();
 
-    $("#next").on("click", function(){
-        nextQuestion();
-    });
+  $("#next").on("click", function () {
+    nextQuestion();
+  });
 
-    $(".choice").on("click", function(){
-        $(".choice").removeClass("selected");
-        $(this).addClass("selected");
-        choice = $(this).attr("id");
-    });
+  $(".choice").on("click", function () {
+    $(".choice").removeClass("selected");
+    $(this).addClass("selected");
+    choice = $(this).attr("id");
+  });
 });
 
-function nextQuestion(){
-    if (choice === ""){
-      $(".alert").removeClass("hidden");
-      updateDisplay();
-      return;
-    } else {
-      $(".alert").addClass("hidden");
-    }
-    if (currentQuestionIndex < questions.length - 1){ 
-        currentQuestionIndex += 1;
-        currentQuestion = questions[currentQuestionIndex];
-        answers[choices.indexOf(choice)] += 1;
-        choice = "";
-        updateDisplay();
-    } else {
-        answers[choices.indexOf(choice)] += 1;
-        choice = "";
-        showResults();
-    }
+function nextQuestion() {
+  if (choice === "") {
+    $(".alert").removeClass("hidden");
+    updateDisplay();
+    return;
+  } else {
+    $(".alert").addClass("hidden");
+  }
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex += 1;
+    currentQuestion = questions[currentQuestionIndex];
+    answers[choices.indexOf(choice)] += 1;
+    choice = "";
+    updateDisplay();
+  } else {
+    answers[choices.indexOf(choice)] += 1;
+    choice = "";
+    fetch("/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(answers),
+      redirect: "follow",
+    })
+      .then((response) => {
+        if (response.redirected) {
+          window.location.href = response.url;
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("There was an error submitting the form.");
+      });
+  }
 }
 
-function updateDisplay(){
-    $("#question").text("Question " + (currentQuestionIndex + 1) + ": " + currentQuestion.question);
-    $("#a").text("A: " + currentQuestion.choiceA);
-    $("#b").text("B: " + currentQuestion.choiceB);
-    $("#c").text("C: " + currentQuestion.choiceC);
-    $("#d").text("D: " + currentQuestion.choiceD);
-    $(".choice").removeClass("selected");
-}
-
-function showResults(){
-    $(".quiz-container").hide();    
-    $("#result-container").removeClass("hidden");  
-    findFamily();
-}
-
-function findFamily(){
-    let maxIndex = answers.indexOf(Math.max(...answers));
-    if(maxIndex == 0){
-        $("#result-head").text("Ready to ignite and rise! Welcome to the Blaze Family!")
-        $("#family-result").text("Fire types are passionate and driven, with a natural inclination for leadership. They thrive on challenges and inspire others with their enthusiasm. While their energy helps them achieve goals, they can become impatient if things don't move quickly. Their love for high-energy activities and creative expression shows their fiery nature.")
-    } else if (maxIndex == 1){
-        $("#result-head").text("Flow with strength, ride the tides! Welcome to the Wave Family!")
-        $("#family-result").text("Calm and adaptable, Water types are emotionally intelligent and empathetic individuals. They navigate emotional situations with ease and serve as a calming presence for others. Their default state is serenity, but they can be overwhelmed by intense emotions. They are drawn to activities that allow for contemplation and emotional depth, like yoga or journaling.")
-    } else if (maxIndex == 2){
-        $("#result-head").text("Rooted in growth, thriving together! Welcome to the Leaf Family!")
-        $("#family-result").text("Grounded and patient, Grass types are nurturing people who find joy in personal growth and stability. They act as a reliable support system and are known for their resilience and cooperation. While content with slow progress, they may struggle with confrontation. Their interests often involve nature and hands-on activities, like gardening or pottery.")
-    } else if (maxIndex == 3){
-        $("#result-head").text("We see the future and make it ours! Welcome to the Shock Family!")
-        $("#family-result").text("Electric types are quick-witted, innovative, and highly energetic thinkers. They thrive in dynamic settings and are known for their unique ideas and problem-solving skills. They are visionaries who love the thrill of new concepts but can become anxious with routine. Their hobbies, such as coding or extreme sports, reflect their need for intellectual stimulation and high-adrenaline experiences.")
-    }
+function updateDisplay() {
+  $("#question").text(
+    "Question " + (currentQuestionIndex + 1) + ": " + currentQuestion.question
+  );
+  $("#a").text(currentQuestion.choiceA);
+  $("#b").text(currentQuestion.choiceB);
+  $("#c").text(currentQuestion.choiceC);
+  $("#d").text(currentQuestion.choiceD);
+  $(".choice").removeClass("selected");
+  if (currentQuestionIndex == questions.length - 1) {
+    $("#next").text("Finish Quiz");
+  }
 }

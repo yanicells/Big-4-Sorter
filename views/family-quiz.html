@@ -14,47 +14,24 @@
 
     <!-- Main Content -->
     <main>
-        <div id="result-container" class="hidden py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
-            <div class="bg-gray-100 shadow-lg rounded-lg p-8 md:p-12 mb-8">
-                <h1 class="text-[#2097a2] text-3xl md:text-5xl font-extrabold mb-2" id="result-head"></h1>
-                <p id="family-result"></p>
-            </div>
-        </div>
-
         <div class="flex flex-col justify-center pb-8 px-4 mx-auto max-w-screen-xl lg:pb-16 quiz-container">
             <div class="mt-8 w-full max-w-4xl mx-auto p-4 bg-white border border-[#5dc6cf] rounded-lg shadow-lg sm:p-6">
                 <h5 class="mb-2 text-3xl font-bold text-[#2097a2]">Discover Your MISA Family</h5>
-                <p class="mb-5 text-base text-gray-700 sm:text-lg">Answer these questions to find out which family you belong to: Fire, Water, Grass, or Electric!</p>
+                <p class="mb-5 text-base text-gray-700 sm:text-lg">Answer these questions to find out which family you belong to: Blaze, Wave, Leaf, or Shock!</p>
             </div>
 
             <div class="mt-8 w-full max-w-4xl mx-auto p-4 bg-white border border-[#5dc6cf] rounded-lg shadow-lg sm:p-6">
                 <h5 class="mb-3 text-base font-semibold text-[#2097a2] md:text-xl" id="question">
                     
                 </h5>
-                <ul class="my-4 space-y-3">
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-3 text-base font-bold text-[#2097a2] rounded-lg bg-gray-100 hover:bg-[#5dc6cf] hover:text-white group hover:shadow transition-colors choice" id="a">
-                            <span class="flex-1 ms-3 whitespace-nowrap"></span>
-                        </a>
+                <ul class="grid-cols-2 grid-rows-2 grid p-4 gap-3 text-center">
+                    <li class="cursor-pointer rounded-lg bg-gray-100 hover:bg-[#5dc6cf] hover:text-white p-3 w-full h-full items-center text-base font-bold text-[#2097a2] group hover:shadow transition-colors choice" id="a">
                     </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-3 text-base font-bold text-[#2097a2] rounded-lg bg-gray-100 hover:bg-[#5dc6cf] hover:text-white group hover:shadow transition-colors choice" id="b">
-                            <span class="flex-1 ms-3 whitespace-nowrap"></span>
-                        </a>
+                    <li class="cursor-pointer rounded-lg bg-gray-100 hover:bg-[#5dc6cf] hover:text-white p-3 w-full h-full items-center text-base font-bold text-[#2097a2] group hover:shadow transition-colors choice" id="b">
                     </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-3 text-base font-bold text-[#2097a2] rounded-lg bg-gray-100 hover:bg-[#5dc6cf] hover:text-white group hover:shadow transition-colors choice" id="c">
-                            <span class="flex-1 ms-3 whitespace-nowrap"></span>
-                        </a>
+                    <li class="cursor-pointer rounded-lg bg-gray-100 hover:bg-[#5dc6cf] hover:text-white p-3 w-full h-full items-center text-base font-bold text-[#2097a2] group hover:shadow transition-colors choice" id="c">
                     </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-3 text-base font-bold text-[#2097a2] rounded-lg bg-gray-100 hover:bg-[#5dc6cf] hover:text-white group hover:shadow transition-colors choice" id="d">
-                            <span class="flex-1 ms-3 whitespace-nowrap"></span>
-                        </a>
+                    <li class="cursor-pointer rounded-lg bg-gray-100 hover:bg-[#5dc6cf] hover:text-white p-3 w-full h-full items-center text-base font-bold text-[#2097a2] group hover:shadow transition-colors choice" id="d">
                     </li>
                     <li>
                         <span class="flex-1 ms-3 whitespace-nowrap alert text-red-400 hidden">You must select an answer!</span>
