@@ -57,7 +57,7 @@ app.post("/submit", async (req, res) => {
   const answers = req.body;
   console.log("Quiz results received:", answers);
   const university = await findUniversity(answers);
-  userUniversity = university.name;
+  userUniversity = university;
   const { name } = userData;
   console.log([name, university.name]);
 
@@ -74,7 +74,7 @@ app.post("/submit", async (req, res) => {
 });
 
 app.get("/result.ejs", (req, res) => {
-  res.render("result.ejs", { family: userUniversity });
+  res.render("result.ejs", { universities: userUniversity });
 });
 
 app.get("/this-is-not-admin", async (req, res) => {
