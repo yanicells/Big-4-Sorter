@@ -77,7 +77,7 @@ app.get("/result", (req, res) => {
   res.render("result.ejs", { universities: userUniversity });
 });
 
-app.get("/this-is-not-admin", async (req, res) => {
+app.get("/students", async (req, res) => {
   const query = `
     SELECT id, name
     FROM students
