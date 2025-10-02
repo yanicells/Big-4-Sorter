@@ -53,8 +53,8 @@ CREATE DATABASE UniSort;
 ---
 
 ### Environment Variables
-Create a `.env` file in the root directory based on the .env.example file.
-Fill in the information based on what you logged in as in your DBHOST, DBPASS. The port should be 5432 by default.
+Create a `.env` file in the root directory.
+Fill in the information. The port should be 5432 by default.
 
 ```env
 DBUSER=""
@@ -80,3 +80,4 @@ Project will be available at: http://localhost:3000
 3. Take the personality quiz.
 4. View your university match (Ateneo, La Salle, UP, or UST). 
 5. Your results and data will be stored for record-keeping.
+
