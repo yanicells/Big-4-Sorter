@@ -66,14 +66,14 @@ app.post("/submit", async (req, res) => {
       name,
       university.name,
     ]);
-    res.redirect("/result.ejs");
+    res.redirect("/result");
   } catch (err) {
     console.error("Database or submission error:", err);
     res.status(500).send("An error occurred.");
   }
 });
 
-app.get("/result.ejs", (req, res) => {
+app.get("/result", (req, res) => {
   res.render("result.ejs", { universities: userUniversity });
 });
 
