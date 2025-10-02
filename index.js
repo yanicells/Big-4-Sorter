@@ -9,7 +9,7 @@ import pg from "pg";
 const app = express();
 const port = 3000;
 let userData = {};
-let userFamily = "";
+let userUniversity = "";
 async function connectWithRetry() {
   const client = new pg.Client({
     user: process.env.DBUSER,
@@ -46,27 +46,27 @@ app.get("/register", (req, res) => {
   res.sendFile(__dirname + "/views/register.html");
 });
 
-app.post("/family-quiz", (req, res) => {
+app.post("/uni-quiz", (req, res) => {
   const { name } = req.body;
   userData = { name };
   console.log(
     `Registration: Name: ${name}`
   );
-  res.sendFile(__dirname + "/views/family-quiz.html");
+  res.sendFile(__dirname + "/views/uni-quiz.html");
 });
   
 app.post("/submit", async (req, res) => {
   const answers = req.body;
   console.log("Quiz results received:", answers);
-  const family = await findFamily(answers);
-  userFamily = family;
+  const university = await findUniversity(answers);
+  userUniversity = university.family;
   const { name } = userData;
-  console.log([name, userFamily.family]);
+  console.log([name, university.family]);
 
   try {
     await db.query("INSERT INTO responses (name, university) VALUES ($1, $2)", [
       name,
-      userFamily.family,
+      university.uni,
     ]);
     res.redirect("/result.ejs");
   } catch (err) {
@@ -76,7 +76,7 @@ app.post("/submit", async (req, res) => {
 });
 
 app.get("/result.ejs", (req, res) => {
-  res.render("result.ejs", { family: userFamily });
+  res.render("result.ejs", { family: userUniversity });
 });
 
 app.get("/this-is-not-admin", async (req, res) => {
@@ -86,17 +86,17 @@ app.get("/this-is-not-admin", async (req, res) => {
     WHERE family_type = $1;
   `;
   try {
-    const blaze_family = await db.query(query, ["Blaze"]);
-    const wave_family = await db.query(query, ["Wave"]);
-    const leaf_family = await db.query(query, ["Leaf"]);
-    const shock_family = await db.query(query, ["Shock"]);
-    const families = [
-      blaze_family.rows,
-      wave_family.rows,
-      leaf_family.rows,
-      shock_family.rows,
+    const admu = await db.query(query, ["ADMU"]);
+    const dlsu = await db.query(query, ["DLSU"]);
+    const up = await db.query(query, ["UP"]);
+    const ust = await db.query(query, ["UST"]);
+    const universities = [
+      admu.rows,
+      dlsu.rows,
+      up.rows,
+      ust.rows,
     ];
-    res.render("admin.ejs", { families: families });
+    res.render("admin.ejs", { universities: universities });
   } catch (err) {
     console.error("Database or submission error:", err);
     res.status(500).send("An error occurred.");
@@ -133,13 +133,3 @@ const universities = [
     body: "You are grounded, faithful, and artistic at heart. Tradition and community are your strongholds, but your creativity and warmth make you shine. Like a Growling Tiger, you're resilient, loyal, and passionate, drawing strength from history and spirituality. You thrive in environments full of culture, faith, and camaraderie, carrying your Thomasian pride with every victory, celebration, and heartfelt moment.",
   },
 ];
-
-
-async function findFamily(answers) {
-  // Find the index of the maximum score
-  let maxScore = Math.max(...answers);
-  let maxIndex = answers.indexOf(maxScore);
-
-  // Return the family with the highest score
-  return families[maxIndex];
-}
