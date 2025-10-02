@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
-    <title>MISAyang Samahan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'lora': ['Lora', 'serif'],
+                        'open-sans': ['Open Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <title>UniSort</title>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col font-open-sans bg-white text-gray-900">
     <!-- Header Partial Placeholder -->
     <div id="header-placeholder"></div>
     
@@ -15,13 +29,13 @@
         <section class="bg-white">
             <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
                 <div
-                    class="bg-gray-100 shadow-lg rounded-lg p-8 md:p-12 mb-8">
+                    class="bg-gray-100 shadow-lg rounded-lg p-8 md:p-12 mb-8 border-t-4 border-gray-800">
                     
-                    <h1 class="text-[#2097a2] text-3xl md:text-5xl font-extrabold mb-2">Welcome to MISAyang Samahan</h1>
-                    <p >Uncover your Pokémon-type personality! Our fun and interactive quiz will sort you into one of four families—Blaze, Wave,
+                    <h1 class="text-gray-900 font-lora text-3xl md:text-5xl font-semibold mb-2">Welcome to MISAyang Samahan</h1>
+                    <p class="text-gray-600 mb-6">Uncover your Pokémon-type personality! Our fun and interactive quiz will sort you into one of four families—Blaze, Wave,
                     Leaf, or Shock—based on your unique traits. Click the button below to find your family and start your adventure!</p>
                     <a href="/register"
-                        class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-[#2097a2] hover:bg-[#5dc6cf] focus:ring-4 focus:ring-[#5dc6cf] transition-colors">
+                        class="inline-flex justify-center items-center py-3 px-6 text-base font-semibold text-center text-white rounded-lg bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 transition-colors">
                         Take the MISA Family Quiz
                         <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
@@ -31,9 +45,9 @@
                     </a>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-gray-100 shadow-lg rounded-lg p-8 md:p-12">
+                    <div class="bg-gray-50 shadow-lg rounded-lg p-8 md:p-12">
                         <span
-                            class="bg-[#2097a2] text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
+                            class="bg-gray-800 text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
                             <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor" viewBox="0 0 18 18">
                                 <path
@@ -41,13 +55,13 @@
                             </svg>
                             Family
                         </span>
-                        <h2 class="text-[#2097a2] text-3xl font-extrabold mb-2">The Family System</h2>
-                        <p>More than just a group, your MISA family is your team. Bond with members across different batches, collaborate on
+                        <h2 class="text-gray-900 font-lora text-3xl font-semibold mb-2">The Family System</h2>
+                        <p class="text-gray-600">More than just a group, your MISA family is your team. Bond with members across different batches, collaborate on
                         challenges, and earn points together. This is your chance to connect, grow, and have fun with your new crew.</p>
                     </div>
-                    <div class="bg-gray-100 shadow-lg rounded-lg p-8 md:p-12">
+                    <div class="bg-gray-50 shadow-lg rounded-lg p-8 md:p-12">
                         <span
-                            class="bg-[#2097a2] text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
+                            class="bg-gray-800 text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
                             <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 20 16">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -55,8 +69,8 @@
                             </svg>
                             Get Involved
                         </span>
-                        <h2 class="text-[#2097a2] text-3xl font-extrabold mb-2">The Point System</h2>
-                        <p >Every task is a step toward victory. Earn points by completing major "Gym Leader Challenges" and smaller "Side Quests."
+                        <h2 class="text-gray-900 font-lora text-3xl font-semibold mb-2">The Point System</h2>
+                        <p class="text-gray-600">Every task is a step toward victory. Earn points by completing major "Gym Leader Challenges" and smaller "Side Quests."
                         Participate in monthly HR initiatives and random encounters to secure badges and climb the leaderboard.</p>
                     </div>
                 </div>

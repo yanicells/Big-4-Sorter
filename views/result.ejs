@@ -4,21 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'lora': ['Lora', 'serif'],
+                        'open-sans': ['Open Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <title>MISAyang Samahan - Family Quiz</title>
 </head>
 
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col font-open-sans bg-white text-gray-900">
     <!-- Header Partial Placeholder -->
     <div id="header-placeholder"></div>
 
     <!-- Main Content -->
     <main>
         <div id="result-container" class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
-            <div class="bg-gray-100 shadow-lg rounded-lg p-8 md:p-12 mb-8" style="color: <%= family.color  %>; border: 10px solid <%= family.color  %>">
-                <h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-center" id="result-head"><%= family.head %><br>Welcome to the...</h1>
+            <div class="bg-gray-100 shadow-lg rounded-lg p-8 md:p-12 mb-8 border-t-4 border-gray-800">
+                <h1 class="text-3xl md:text-5xl font-lora font-semibold mb-2 text-center text-gray-900" id="result-head"><%= family.head %><br>Welcome to the...</h1>
                 <img class="mx-auto my-4 drop-shadow-md h-30 object-contain" src="/images/family_icons/<%= family.family %>.png">
-                <p id="family-result" class="text-center" style="color: <%= family.color  %>"><%= family.body %></p>
+                <p id="family-result" class="text-center text-gray-600 text-lg"><%= family.body %></p>
             </div>
         </div>
         
