@@ -79,7 +79,7 @@ app.get("/result.ejs", (req, res) => {
 
 app.get("/this-is-not-admin", async (req, res) => {
   const query = `
-    SELECT name
+    SELECT id, name
     FROM students
     WHERE university = $1;
   `;
@@ -88,8 +88,8 @@ app.get("/this-is-not-admin", async (req, res) => {
     const dlsu = await db.query(query, ["DLSU"]);
     const up = await db.query(query, ["UP"]);
     const ust = await db.query(query, ["UST"]);
-    const universities = [admu.rows, dlsu.rows, up.rows, ust.rows];
-    res.render("admin.ejs", { universities: universities });
+    const families = [admu.rows, dlsu.rows, up.rows, ust.rows];
+    res.render("admin.ejs", { families: families });
   } catch (err) {
     console.error("Database or submission error:", err);
     res.status(500).send("An error occurred.");
