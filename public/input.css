@@ -40,33 +40,32 @@ p {
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
-
 .choice-a.selected {
-    background-color: rgb(31, 41, 55) !important;
-    border-color: rgb(31, 41, 55) !important;
-    color: white !important;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4) !important;
+    background-color: rgb(31, 41, 55) ;
+    border-color: rgb(31, 41, 55) ;
+    color: white ;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4) ;
 }
 
 .choice-b.selected {
-    background-color: rgb(55, 65, 81) !important;
-    border-color: rgb(55, 65, 81) !important;
-    color: white !important;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+    background-color: rgb(55, 65, 81) ;
+    border-color: rgb(55, 65, 81) ;
+    color: white ;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) ;
 }
 
 
 .choice-c.selected {
-    background-color: rgb(75, 85, 99) !important;
-    border-color: rgb(75, 85, 99) !important;
-    color: white !important;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25) !important;
+    background-color: rgb(75, 85, 99) ;
+    border-color: rgb(75, 85, 99) ;
+    color: white ;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25) ;
 }
 
 .choice-d.selected {
-    background-color: rgb(17, 24, 39) !important;
-    border-color: rgb(17, 24, 39) !important;
-    color: white !important;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5) !important;
+    background-color: rgb(17, 24, 39) ;
+    border-color: rgb(17, 24, 39) ;
+    color: white ;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5) ;
 }
 
