@@ -580,41 +580,6 @@
       color: var(--color-gray-400);
     }
   }
-  .hover\:border-gray-600 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-gray-600);
-      }
-    }
-  }
-  .hover\:border-gray-700 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-gray-700);
-      }
-    }
-  }
-  .hover\:border-gray-800 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-gray-800);
-      }
-    }
-  }
-  .hover\:border-gray-900 {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-gray-900);
-      }
-    }
-  }
-  .hover\:bg-gray-600 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-600);
-      }
-    }
-  }
   .hover\:bg-gray-700 {
     &:hover {
       @media (hover: hover) {
@@ -622,31 +587,10 @@
       }
     }
   }
-  .hover\:bg-gray-800 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-800);
-      }
-    }
-  }
-  .hover\:bg-gray-900 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-900);
-      }
-    }
-  }
   .hover\:text-\[\#5dc6cf\] {
     &:hover {
       @media (hover: hover) {
         color: #5dc6cf;
-      }
-    }
-  }
-  .hover\:text-white {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-white);
       }
     }
   }
@@ -869,6 +813,30 @@ p {
   border-color: #FFD700;
   color: #222222;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+.choice-a.selected {
+  background-color: rgb(31, 41, 55) !important;
+  border-color: rgb(31, 41, 55) !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4) !important;
+}
+.choice-b.selected {
+  background-color: rgb(55, 65, 81) !important;
+  border-color: rgb(55, 65, 81) !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+}
+.choice-c.selected {
+  background-color: rgb(75, 85, 99) !important;
+  border-color: rgb(75, 85, 99) !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25) !important;
+}
+.choice-d.selected {
+  background-color: rgb(17, 24, 39) !important;
+  border-color: rgb(17, 24, 39) !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5) !important;
 }
 @property --tw-space-y-reverse {
   syntax: "*";
