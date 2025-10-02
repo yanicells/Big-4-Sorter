@@ -47,25 +47,25 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/family-quiz", (req, res) => {
-  const { idNumber, fullName, email } = req.body;
-  userData = { idNumber, fullName, email };
+  const { name } = req.body;
+  userData = { name };
   console.log(
-    `Registration: ID ${idNumber}, Name: ${fullName}, email: ${email}`
+    `Registration: Name: ${name}`
   );
   res.sendFile(__dirname + "/views/family-quiz.html");
 });
-
+  
 app.post("/submit", async (req, res) => {
   const answers = req.body;
   console.log("Quiz results received:", answers);
   const family = await findFamily(answers);
   userFamily = family;
-  const { idNumber, fullName, email } = userData;
-  console.log([idNumber, fullName, email, userFamily.family]);
+  const { name } = userData;
+  console.log([name, userFamily.family]);
 
   try {
     await db.query("INSERT INTO responses (name, university) VALUES ($1, $2)", [
-      fullName,
+      name,
       userFamily.family,
     ]);
     res.redirect("/result.ejs");
