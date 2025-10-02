@@ -46,15 +46,13 @@ app.get("/register", (req, res) => {
   res.sendFile(__dirname + "/views/register.html");
 });
 
-app.post("/uni-quiz", (req, res) => {
-  const { name } = req.body;
-  userData = { name };
-  console.log(
-    `Registration: Name: ${name}`
-  );
+app.post("/quiz", (req, res) => {
+  const { fullName } = req.body;
+  userData = { name: fullName };
+  console.log(`Registration: Name: ${fullName}`);
   res.sendFile(__dirname + "/views/uni-quiz.html");
 });
-  
+
 app.post("/submit", async (req, res) => {
   const answers = req.body;
   console.log("Quiz results received:", answers);
@@ -90,12 +88,7 @@ app.get("/this-is-not-admin", async (req, res) => {
     const dlsu = await db.query(query, ["DLSU"]);
     const up = await db.query(query, ["UP"]);
     const ust = await db.query(query, ["UST"]);
-    const universities = [
-      admu.rows,
-      dlsu.rows,
-      up.rows,
-      ust.rows,
-    ];
+    const universities = [admu.rows, dlsu.rows, up.rows, ust.rows];
     res.render("admin.ejs", { universities: universities });
   } catch (err) {
     console.error("Database or submission error:", err);
@@ -133,3 +126,19 @@ const universities = [
     body: "You are grounded, faithful, and artistic at heart. Tradition and community are your strongholds, but your creativity and warmth make you shine. Like a Growling Tiger, you're resilient, loyal, and passionate, drawing strength from history and spirituality. You thrive in environments full of culture, faith, and camaraderie, carrying your Thomasian pride with every victory, celebration, and heartfelt moment.",
   },
 ];
+
+async function findUniversity(answers) {
+  // Find the index of the maximum score
+  let maxScore = Math.max(...answers);
+  let maxIndex = answers.indexOf(maxScore);
+
+  // Map the index to the corresponding university
+  const universityMap = {
+    0: universities[0],
+    1: universities[1],
+    2: universities[2],
+    3: universities[3],
+  };
+
+  return universityMap[maxIndex];
+}
