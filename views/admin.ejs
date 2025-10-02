@@ -33,11 +33,11 @@
                 </div>
 
                 <div class="relative overflow-x-auto rounded-lg">
-                    <% const familyNames=['ADMU', 'DLSU' , 'UP' , 'UST' ]; %>
-                    <% if(locals.families && families.length> 0) {%>
-                    <% locals.families.forEach(function(family, index) { %>
+                    <% const universityNames=['ADMU', 'DLSU' , 'UP' , 'UST' ]; %>
+                    <% if(locals.universities && universities.length> 0) {%>
+                    <% locals.universities.forEach(function(university, index) { %>
                     <div class="bg-gray-50 shadow-lg rounded-lg p-2 md:p-4 mb-2 text-center mt-4">
-                        <h2 class="text-gray-900 font-lora text-1xl md:text-3xl font-semibold"><%= familyNames[index] %> Students</h2>
+                        <h2 class="text-gray-900 font-lora text-1xl md:text-3xl font-semibold"><%= universityNames[index] %> Students</h2>
                     </div>
                     <table class="w-full text-sm text-left rtl:text-right text-gray-900 mb-8">
                         <thead class="text-xs text-white uppercase bg-gray-800">
@@ -47,8 +47,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% if(family.length> 0) {%>
-                            <% family.forEach(function(student) { %>
+                            <% if(university.length> 0) {%>
+                            <% university.forEach(function(student) { %>
                             <tr class="bg-gray-50 border-b border-gray-200">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     <%= student.id %>
