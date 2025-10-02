@@ -107,32 +107,33 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-const families = [
+const universities = [
   {
-    family: "Blaze",
-    color: "#f88400",
-    head: "Ready to ignite and rise!",
-    body: "Fire types are passionate and driven, with a natural inclination for leadership. They thrive on challenges and inspire others with their enthusiasm. While their energy helps them achieve goals, they can become impatient if things don't move quickly. Their love for high-energy activities and creative expression shows their fiery nature.",
+    uni: "Ateneo de Manila University",
+    color: "#0047AB",
+    head: "One Big Fight! You’re an Atenean!",
+    body: "You embody the Atenean spirit—reflective, compassionate, and principled. Guided by purpose and cura personalis (care for the whole person), you strive for excellence while lifting others alongside you. You thrive in thoughtful environments, balancing intellect with heart, and often find meaning in community service, arts, and faith. You’re a Blue Eagle soaring high, always searching for deeper truths and serving with love.",
   },
   {
-    family: "Wave",
-    color: "#498feb",
-    head: "Flow with strength, ride the tides!",
-    body: "Calm and adaptable, Water types are emotionally intelligent and empathetic individuals. They navigate emotional situations with ease and serve as a calming presence for others. Their default state is serenity, but they can be overwhelmed by intense emotions. They are drawn to activities that allow for contemplation and emotional depth, like yoga or journaling.",
+    uni: "De La Salle University",
+    color: "#10751A",
+    head: "Animo La Salle! You’re a Lasallian!",
+    body: "You radiate drive, energy, and ambition. Always competitive and ready for the big leagues, you thrive in dynamic, fast-paced environments full of challenge. Like the Green Archer, you’re precise, sharp, and goal-oriented, excelling in leadership, innovation, and bold moves. You inspire others with your determination and spirit, living the Lasallian call to make things happen with excellence and Animo!",
   },
   {
-    family: "Leaf",
-    color: "#7ec367",
-    head: "Rooted in growth, thriving together!",
-    body: "Grounded and patient, Grass types are nurturing people who find joy in personal growth and stability. They act as a reliable support system and are known for their resilience and cooperation. While content with slow progress, they may struggle with confrontation. Their interests often involve nature and hands-on activities, like gardening or pottery.",
+    uni: "University of the Philippines",
+    color: "#800000",
+    head: "UP Fight! You’re an Iskolar ng Bayan!",
+    body: "You are bold, independent, and socially conscious. With a mind sharpened by freedom and a heart for the people, you seek truth and justice wherever you go. Like a Fighting Maroon, you are unafraid to take a stand, challenge systems, and embrace creativity with grit. You thrive in diverse communities, always ready to make a difference—and you carry the Iskolar ng Bayan spirit of service and activism.",
   },
   {
-    family: "Shock",
-    color: "#e8ce24",
-    head: "We see the future and make it ours!",
-    body: "Electric types are quick-witted, innovative, and highly energetic thinkers. They thrive in dynamic settings and are known for their unique ideas and problem-solving skills. They are visionaries who love the thrill of new concepts but can become anxious with routine. Their hobbies, such as coding or extreme sports, reflect their need for intellectual stimulation and high-adrenaline experiences.",
+    uni: "University of Santo Tomas",
+    color: "#FFD700",
+    head: "Go Uste! You’re a Thomasian!",
+    body: "You are grounded, faithful, and artistic at heart. Tradition and community are your strongholds, but your creativity and warmth make you shine. Like a Growling Tiger, you’re resilient, loyal, and passionate, drawing strength from history and spirituality. You thrive in environments full of culture, faith, and camaraderie, carrying your Thomasian pride with every victory, celebration, and heartfelt moment.",
   },
 ];
+
 
 async function findFamily(answers) {
   // Find the index of the maximum score
