@@ -11,6 +11,7 @@
     --color-red-800: oklch(44.4% 0.177 26.899);
     --color-yellow-500: oklch(79.5% 0.184 86.047);
     --color-green-700: oklch(52.7% 0.154 150.069);
+    --color-green-800: oklch(44.8% 0.119 151.328);
     --color-blue-800: oklch(42.4% 0.199 265.638);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
@@ -440,6 +441,9 @@
   .border-\[\#5dc6cf\] {
     border-color: #5dc6cf;
   }
+  .border-blue-800 {
+    border-color: var(--color-blue-800);
+  }
   .border-gray-200 {
     border-color: var(--color-gray-200);
   }
@@ -448,6 +452,18 @@
   }
   .border-gray-800 {
     border-color: var(--color-gray-800);
+  }
+  .border-green-700 {
+    border-color: var(--color-green-700);
+  }
+  .border-green-800 {
+    border-color: var(--color-green-800);
+  }
+  .border-red-800 {
+    border-color: var(--color-red-800);
+  }
+  .border-yellow-500 {
+    border-color: var(--color-yellow-500);
   }
   .bg-\[\#2097a2\] {
     background-color: #2097a2;
