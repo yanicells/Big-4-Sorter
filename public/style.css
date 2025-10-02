@@ -250,9 +250,6 @@
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
   }
-  .mb-4 {
-    margin-bottom: calc(var(--spacing) * 4);
-  }
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
   }
@@ -277,9 +274,6 @@
   .inline-flex {
     display: inline-flex;
   }
-  .h-2 {
-    height: calc(var(--spacing) * 2);
-  }
   .h-2\.5 {
     height: calc(var(--spacing) * 2.5);
   }
@@ -300,9 +294,6 @@
   }
   .min-h-screen {
     min-height: 100vh;
-  }
-  .w-1\/4 {
-    width: calc(1/4 * 100%);
   }
   .w-2\.5 {
     width: calc(var(--spacing) * 2.5);
@@ -359,14 +350,8 @@
       margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
-  .overflow-hidden {
-    overflow: hidden;
-  }
   .overflow-x-auto {
     overflow-x: auto;
-  }
-  .rounded-full {
-    border-radius: calc(infinity * 1px);
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
@@ -862,28 +847,28 @@ p {
   display: none;
 }
 .choice-a:hover {
-  background-color: rgb(31, 41, 55);
-  border-color: rgb(31, 41, 55);
+  background-color: #0047AB;
+  border-color: #0047AB;
   color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 71, 171, 0.5);
 }
 .choice-b:hover {
-  background-color: rgb(55, 65, 81);
-  border-color: rgb(55, 65, 81);
+  background-color: #10751A;
+  border-color: #10751A;
   color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(16, 117, 26, 0.5);
 }
 .choice-c:hover {
-  background-color: rgb(75, 85, 99);
-  border-color: rgb(75, 85, 99);
+  background-color: #800000;
+  border-color: #800000;
   color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 10px rgba(128, 0, 0, 0.5);
 }
 .choice-d:hover {
-  background-color: rgb(17, 24, 39);
-  border-color: rgb(17, 24, 39);
-  color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background-color: #FFD700;
+  border-color: #FFD700;
+  color: #222222;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 @property --tw-space-y-reverse {
   syntax: "*";
