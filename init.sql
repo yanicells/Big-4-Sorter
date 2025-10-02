@@ -1,6 +1,5 @@
 CREATE TABLE students (
-  id int PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  family_type VARCHAR(100) NOT NULL
-);
+  university VARCHAR(50) NOT NULL
+);  
